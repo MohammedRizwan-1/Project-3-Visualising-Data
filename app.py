@@ -138,11 +138,11 @@ def stats():
 @app.route('/poke-table')
 def poketable():
   session = Session(engine)
-  # tb_data1 = session.query(poke.poke_id, poke.name, poke.height, poke.weight).all()
   tb_data1 = session.query(poke.poke_id, poke.standard_pic, poke.name, poke.height, poke.weight, poke.male_rate, poke.female_rate, poke.type_1, poke.growth_rate, poke.base_hp).all()
+  char_count = session.query(poke.name).count()
   session.close()
 
-  return render_template("poke_table.html", tb_data1 = tb_data1)
+  return render_template("poke_table.html", tb_data1 = tb_data1, char_count= char_count)
 
 
 
