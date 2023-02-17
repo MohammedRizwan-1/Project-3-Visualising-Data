@@ -17,7 +17,10 @@
         </ul>
       </div>
 
+      <!-- start of all tabs container -->
       <div class="tab-content tab-content-basic">
+
+        <!-- start of 1st tab -->
         <div class="tab-pane fade show active" id="first" role="tabpanel" aria-labelledby="overview">
           <div class="row">
             <div class="col-12 col-lg-4 col-lg-12">
@@ -40,10 +43,9 @@
                          <h4 class="card-title card-title-dash">Sample chart 1</h4>
                          <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
                         </div>
-                        <div id="performance-line-legend"></div>
                       </div>
-                      <div class="chartjs-wrapper mt-5">
-                        <canvas id="performaneLine"></canvas>
+                      <div class="mt-5">
+                        <div id="barchart1">chart</div>
                       </div>
                     </div>
                   </div>
@@ -73,104 +75,12 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-8 d-flex flex-column">
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                          <h4 class="card-title card-title-dash">Sample Chart 2</h4>
-                         <p class="card-subtitle card-subtitle-dash">sub heading</p>
-                        </div>
-                      </div>
-                      <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                        <div class="me-3"><div id="marketing-overview-legend"></div></div>
-                      </div>
-                      <div class="chartjs-bar-wrapper mt-3">
-                        <canvas id="marketingOverview"></canvas>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                          <h4 class="card-title card-title-dash">Heading</h4>
-                         <p class="card-subtitle card-subtitle-dash">Sub Heading</p>
-                        </div>
-                      </div>
-                      <div class="table-responsive  mt-1">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                          <h4 class="card-title card-title-dash">Heading</h4>
-                         <p class="card-subtitle card-subtitle-dash">Sub Heading</p>
-                        </div>
-                      </div>
-                      <div class="table-responsive  mt-1">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 d-flex flex-column">
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="card-title card-title-dash">Sample Chart 3</h4>
-                          </div>
-                          <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
-                          <div id="doughnut-chart-legend" class="mt-5 text-center"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                              <h4 class="card-title card-title-dash">Leave Report</h4>
-                            </div>
-                          </div>
-                          <div class="mt-3">
-                            <canvas id="leaveReport"></canvas>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
+        <!-- end of 1st tab -->
 
-        <div class="tab-pane fade show active" id="second" role="tabpanel" aria-labelledby="overview">
+
+        <!-- start of  2nd tab -->
+        <div class="tab-pane fade show" id="second" role="tabpanel" aria-labelledby="overview">
           <div class="row">
             <div class="col-12 col-lg-4 col-lg-12">
               <h3 class="tab-head">
@@ -189,13 +99,12 @@
                     <div class="card-body">
                       <div class="d-sm-flex justify-content-between align-items-start">
                         <div>
-                         <h4 class="card-title card-title-dash">second screen</h4>
+                         <h4 class="card-title card-title-dash">Sample chart 1</h4>
                          <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
                         </div>
-                        <div id="performance-line-legend"></div>
                       </div>
-                      <div class="chartjs-wrapper mt-5">
-                        <canvas id="performaneLine"></canvas>
+                      <div class="mt-5">
+                        <div id="piechart1">chart</div>
                       </div>
                     </div>
                   </div>
@@ -225,104 +134,13 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-8 d-flex flex-column">
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                          <h4 class="card-title card-title-dash">Sample Chart 2</h4>
-                         <p class="card-subtitle card-subtitle-dash">sub heading</p>
-                        </div>
-                      </div>
-                      <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                        <div class="me-3"><div id="marketing-overview-legend"></div></div>
-                      </div>
-                      <div class="chartjs-bar-wrapper mt-3">
-                        <canvas id="marketingOverview"></canvas>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                          <h4 class="card-title card-title-dash">Heading</h4>
-                         <p class="card-subtitle card-subtitle-dash">Sub Heading</p>
-                        </div>
-                      </div>
-                      <div class="table-responsive  mt-1">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                          <h4 class="card-title card-title-dash">Heading</h4>
-                         <p class="card-subtitle card-subtitle-dash">Sub Heading</p>
-                        </div>
-                      </div>
-                      <div class="table-responsive  mt-1">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 d-flex flex-column">
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="card-title card-title-dash">Sample Chart 3</h4>
-                          </div>
-                          <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
-                          <div id="doughnut-chart-legend" class="mt-5 text-center"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                              <h4 class="card-title card-title-dash">Leave Report</h4>
-                            </div>
-                          </div>
-                          <div class="mt-3">
-                            <canvas id="leaveReport"></canvas>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="tab-pane fade show active" id="third" role="tabpanel" aria-labelledby="overview">
+        </div>
+        <!-- end of 2nd tab -->
+
+
+        <!-- start of 3rd tab -->
+        <div class="tab-pane fade show" id="third" role="tabpanel" aria-labelledby="overview">
           <div class="row">
             <div class="col-12 col-lg-4 col-lg-12">
               <h3 class="tab-head">
@@ -341,13 +159,12 @@
                     <div class="card-body">
                       <div class="d-sm-flex justify-content-between align-items-start">
                         <div>
-                         <h4 class="card-title card-title-dash">second screen</h4>
+                         <h4 class="card-title card-title-dash">Sample chart 1</h4>
                          <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
                         </div>
-                        <div id="performance-line-legend"></div>
                       </div>
-                      <div class="chartjs-wrapper mt-5">
-                        <canvas id="performaneLine"></canvas>
+                      <div class="mt-5">
+                        <div id="linegraph1">chart</div>
                       </div>
                     </div>
                   </div>
@@ -377,105 +194,14 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-8 d-flex flex-column">
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                          <h4 class="card-title card-title-dash">Sample Chart 2</h4>
-                         <p class="card-subtitle card-subtitle-dash">sub heading</p>
-                        </div>
-                      </div>
-                      <div class="d-sm-flex align-items-center mt-1 justify-content-between">
-                        <div class="me-3"><div id="marketing-overview-legend"></div></div>
-                      </div>
-                      <div class="chartjs-bar-wrapper mt-3">
-                        <canvas id="marketingOverview"></canvas>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                          <h4 class="card-title card-title-dash">Heading</h4>
-                         <p class="card-subtitle card-subtitle-dash">Sub Heading</p>
-                        </div>
-                      </div>
-                      <div class="table-responsive  mt-1">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                          <h4 class="card-title card-title-dash">Heading</h4>
-                         <p class="card-subtitle card-subtitle-dash">Sub Heading</p>
-                        </div>
-                      </div>
-                      <div class="table-responsive  mt-1">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 d-flex flex-column">
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="card-title card-title-dash">Sample Chart 3</h4>
-                          </div>
-                          <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
-                          <div id="doughnut-chart-legend" class="mt-5 text-center"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row flex-grow">
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                              <h4 class="card-title card-title-dash">Leave Report</h4>
-                            </div>
-                          </div>
-                          <div class="mt-3">
-                            <canvas id="leaveReport"></canvas>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>        
+
+        </div>
+        <!--  end of 3rd tab -->
 
 
       </div>
+      <!-- end of all tabs container -->
+
     </div>
   </div>
 
