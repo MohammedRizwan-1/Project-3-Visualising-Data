@@ -31,20 +31,24 @@
                       </div>
                       <div class="mt-5">
                         <!-- start of table display -->
-                        <div id="table1">
-                          <table> 
-                            <thead> 
+                        <div id="gr-levels-table"class="table-responsive">
+                          <table class="table table-striped">
+                            <thead>  
                             <tr> 
-                                <th>ID</th> 
+                                <th>Poke ID</th> 
                                 <th>Name</th> 
+                                <th>Height</th> 
+                                <th>Weight</th> 
                             </tr> 
                             </thead> 
                             <tbody> 
                         
-                                {% for row in data1 %}
+                                {% for row in tb_data1 %}
                                 <tr> 
                                     <td>{{row[0]}}</td> 
                                     <td>{{row[1]}}</td> 
+                                    <td>{{row[2]}}</td> 
+                                    <td>{{row[3]}}</td> 
                                 </tr> 
                                 {% endfor %}
                             </tbody> 

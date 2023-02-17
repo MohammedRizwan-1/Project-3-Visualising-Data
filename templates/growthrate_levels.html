@@ -8,9 +8,9 @@
           <div class="row">
             <div class="col-12 col-lg-4 col-lg-12">
               <h3 class="tab-head">
-                First Tab
+                Growth Rate Table Data
                 <small class="text-muted">
-                  Secondary text
+                  Levels
                 </small>
               </h3>
             </div>
@@ -24,27 +24,31 @@
                     <div class="card-body">
                       <div class="d-sm-flex justify-content-between align-items-start">
                         <div>
-                         <h4 class="card-title card-title-dash">Sample chart 1</h4>
-                         <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
+                         <h4 class="card-title card-title-dash">Growth Rate</h4>
+                         <h5 class="card-subtitle card-subtitle-dash">Levels</h5>
                         </div>
                         <div id="performance-line-legend"></div>
                       </div>
                       <div class="mt-5">
                         <!-- start of table display -->
-                        <div id="table1">
-                          <table> 
+                        <div id="gr-levels-table"class="table-responsive">
+                          <table class="table table-striped">
                             <thead> 
                             <tr> 
                                 <th>ID</th> 
-                                <th>Name</th> 
+                                <th>Growth Rate</th> 
+                                <th>Level</th> 
+                                <th>Experience</th> 
                             </tr> 
                             </thead> 
                             <tbody> 
                         
-                                {% for row in data1 %}
+                                {% for row in tb_data3 %}
                                 <tr> 
                                     <td>{{row[0]}}</td> 
                                     <td>{{row[1]}}</td> 
+                                    <td>{{row[2]}}</td> 
+                                    <td>{{row[3]}}</td> 
                                 </tr> 
                                 {% endfor %}
                             </tbody> 
@@ -58,20 +62,25 @@
               </div>
             </div>
             <div class="col-lg-4 d-flex flex-column">
-              <div class="row flex-grow">
+              <div class="row">
                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                   <div class="card bg-primary card-rounded">
                     <div class="card-body pb-0">
-                      <h4 class="card-title card-title-dash text-white mb-4">Summary of Data</h4>
+                      <h3 class="card-title card-title-dash text-warning mb-4">Summary of Table</h3>
+                      <hr>
                       <div class="row">
-                        <div class="col-sm-4">
-                          <p class="status-summary-ight-white mb-1">Closed Value</p>
-                          <h2 class="text-info">357</h2>
+                        <div class="col-sm-12">
+                          <h4 class="text-warning">SPECIES ANALYSED</h4>
+                          <h6 class="text-info">{{gr_levels_count}}</h6>
                         </div>
-                        <div class="col-sm-8">
-                          <div class="status-summary-chart-wrapper pb-4">
-                            <canvas id="table-summary1"></canvas>
-                          </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-12 mb-4">
+                          <h4 class="text-warning">GROWTH RATES : MAX EXP</h4>
+                          {% for li in gr_species_gr %}
+                            <h6 class="text-info">{{li[0]}}:{{gr_levels_max_ex[loop.index0][0]}}</h6>
+                          {% endfor %}
                         </div>
                       </div>
                     </div>
@@ -95,7 +104,7 @@
                         <div id="performance-line-legend"></div>
                       </div>
                       <div class="chartjs-wrapper mt-5">
-                        <canvas id="performaneLine"></canvas>
+                        <canvas id="performaneLine">{{ template_ingredients | length}}</canvas>
                       </div>
                     </div>
                   </div>

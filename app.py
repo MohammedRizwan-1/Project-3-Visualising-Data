@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, render_template
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Text, Boolean, Float
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine, func
+
+from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 
 import requests
@@ -23,78 +24,153 @@ database_name = 'pandachams_db'
 rds_connection_string = f'{protocol}://{username}:{password}@{host}:{port}/{database_name}'
 engine = create_engine(rds_connection_string)
 
-Base = declarative_base()
+# reflect an existing database into a new model
+Base = automap_base()
+
+# reflect the tables
+Base.prepare(autoload_with=engine)
+
+# Save reference to the tables
+poke = Base.classes.poke
+gr_species_table = Base.classes.growth_rate_species
+gr_levels_table = Base.classes.growth_rate_levels
+
 
 
 # Flask Setup
 app = Flask(__name__)
 
 # Flask Routes
+
+# Home route
 @app.route("/")
 def index():
   return render_template("index.html")
 
+# API routes
+# Poke route api
 @app.route("/api/poke")
-def poke():
+def poke_api():
     session = Session(bind=engine)
-    execute_string = "select * from poke"
-    pokes = engine.execute(execute_string).fetchall()
+    pokes = session.query(poke).all()
     session.close()
     
     poke_list = []
     for row in pokes:
         poke_list.append({
-              "poke_id": row[0],                  
-              "name": row[1],                    
-              "height": row[2],
-              "weight": row[3],
-              "male_rate": row[4],
-              "female_rate": row[5],
-              "gender_neutral_rate": row[6],
-              "type_1": row[7],
-              "type_2": row[8],
-              "color": row[9],
-              "shape": row[10],
-              "growth_rate": row[11],
-              "base_hp": row[12],
-              "base_attack": row[13],
-              "base_def": row[14],
-              "base_sp_attack": row[15],
-              "base_sp_def": row[16],
-              "base_speed": row[17],
-              "evolves_from": row[18],
-              "habitat": row[19],
-              "catch_rate": row[20],
-              "is_baby": row[21],
-              "is_legendary": row[22],
-              "is_mythical": row[23],
-              "standard_pic": row[24],           
-              "shiny_pic": row[25]            
+              "poke_id": row.poke_id,                  
+              "name": row.name,             
+              "height": row.height,
+              "weight": row.weight,
+              "male_rate": row.male_rate,
+              "female_rate": row.female_rate,
+              "gender_neutral_rate": row.gender_neutral_rate,
+              "type_1": row.type_1,
+              "type_2": row.type_2,
+              "color": row.color,
+              "shape": row.shape,
+              "growth_rate": row.growth_rate,
+              "base_hp": row.base_hp,
+              "base_attack": row.base_attack,
+              "base_def": row.base_def,
+              "base_sp_attack": row.base_sp_attack,
+              "base_sp_def": row.base_sp_def,
+              "base_speed": row.base_speed,
+              "evolves_from": row.evolves_from,
+              "habitat": row.habitat,
+              "catch_rate": row.catch_rate,
+              "is_baby": row.is_baby,
+              "is_legendary": row.is_legendary,
+              "is_mythical": row.is_mythical,
+              "standard_pic": row.standard_pic,           
+              "shiny_pic": row.shiny_pic            
             })
     
     # Return dictionary as a JSON file for JS processing
     return(jsonify(poke_list))
 
-@app.route('/api/growthrate')
-def growth_rate():
-  return "growth rate here"
+# Growth rate species api
+@app.route('/api/gr-species')
+def gr_species():
+    session = Session(bind=engine)
+    growth_rate_species = session.query(gr_species_table.id, gr_species_table.growth_rate, gr_species_table.species_name).all()
+    session.close()
+    
+    gr_species = []
+    for row in growth_rate_species:
+        gr_species.append({
+              "id": row[0],         
+              "growth_rate": row[1],
+              "species_name": row[2],  
+           })
+    
+    # Return dictionary as a JSON file for JS processing
+    return(jsonify(gr_species))
+
+
+# Growth rate level api
+@app.route('/api/gr-levels')
+def gr_levels():
+    session = Session(bind=engine)
+    growth_rate_levels = session.query(gr_levels_table.id, gr_levels_table.growth_rate, gr_levels_table.levels, gr_levels_table.exp).all()
+    session.close()
+    
+    gr_levels = []
+    for row in growth_rate_levels:
+        gr_levels.append({
+              "id": row[0],                  
+              "growth_rate": row[1],                    
+              "level": row[2],                    
+              "exp": row[3],                    
+           })
+    
+    # Return dictionary as a JSON file for JS processing
+    return(jsonify(gr_levels))
 
 
 @app.route('/stats')
 def stats():
   return render_template("stats.html")
 
-@app.route('/tables')
-def tables():
-  session = Session(bind=engine)
-  execute_string = "select * from poke limit 10"
-  poke_table1 = engine.execute(execute_string).fetchall()
+
+
+# stats route
+@app.route('/poke-table')
+def poketable():
+  session = Session(engine)
+  # tb_data1 = session.query(poke.poke_id, poke.name, poke.height, poke.weight).all()
+  tb_data1 = session.query(poke).filter().all()
   session.close()
 
-  # poke_table1 = pd.DataFrame(poke_table1).to_html()
-  # poke_table1 = "table here"
+  return render_template("poke_table.html", tb_data1 = tb_data1)
 
-  return render_template("table1.html", data1 = poke_table1)
+
+
+@app.route('/grspecies-table')
+def growthrate_species():
+  session = Session(engine)
+  tb_data2 = session.query(gr_species_table.id, gr_species_table.growth_rate, gr_species_table.species_name).all()
+  gr_species_count = session.query(gr_species_table.species_name).count()
+  gr_species_gr = session.query(gr_species_table.growth_rate).distinct().all()
+  session.close()
+
+  return render_template("growthrate_species.html", tb_data2 = tb_data2, gr_species_count = gr_species_count, gr_species_gr = gr_species_gr)
+
+
+
+@app.route('/grlevels-table')
+def growthrate_levels():
+  session = Session(engine)
+  tb_data3 = session.query(gr_levels_table.id, gr_levels_table.growth_rate, gr_levels_table.levels, gr_levels_table.exp).all()
+  gr_levels_count = session.query(gr_levels_table.levels).filter(gr_levels_table.growth_rate == "slow").count()
+  gr_species_gr = session.query(gr_species_table.growth_rate).distinct().all()
+  gr_levels_max_ex = session.query(gr_levels_table.exp).filter(gr_levels_table.levels == 100).all()
+
+  session.close()
+
+  return render_template("growthrate_levels.html", tb_data3 = tb_data3, gr_levels_count = gr_levels_count, gr_species_gr = gr_species_gr, gr_levels_max_ex = gr_levels_max_ex)
+
+
 
 @app.route('/about')
 def about():

@@ -79,8 +79,9 @@
             </a>
             <div class="collapse" id="stat-tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="/tables">Poke Table</a></li>
-                <li class="nav-item"> <a class="nav-link" href="#">Table 2</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/poke-table">Table Poke</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/grspecies-table">Table Growth Rate Species</a></li>
+                <li class="nav-item"> <a class="nav-link" href="grlevels-table">Table Growth Rate Levels</a></li>
               </ul>
             </div>
           </li>
@@ -92,8 +93,9 @@
             </a>
             <div class="collapse" id="api-pages">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/poke">Poke</a></li>
-                <li class="nav-item"> <a class="nav-link" href="/api/growthrate">Poke Growth Rate</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/poke">API Poke</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/gr-species">API Growth Rate Species</a></li>
+                <li class="nav-item"> <a class="nav-link" target="_blank" href="/api/gr-levels">API Growth Rate Levels</a></li>
               </ul>
             </div>
           </li>
@@ -105,6 +107,7 @@
           <div class="row">
             <!-- templates will be pushed here -->
             {% block content %}
+
             {% endblock %}
 
           </div>
