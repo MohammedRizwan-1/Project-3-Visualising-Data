@@ -140,9 +140,11 @@ def poketable():
   session = Session(engine)
   tb_data1 = session.query(poke.poke_id, poke.standard_pic, poke.name, poke.height, poke.weight, poke.male_rate, poke.female_rate, poke.type_1, poke.growth_rate, poke.base_hp).all()
   char_count = session.query(poke.name).count()
+  avg_wt = session.query(func.round(func.avg(poke.weight)), 0).one()
+  avg_ht = session.query(func.round(func.avg(poke.height)), 0).one()
   session.close()
 
-  return render_template("poke_table.html", tb_data1 = tb_data1, char_count= char_count)
+  return render_template("poke_table.html", tb_data1 = tb_data1, char_count= char_count, avg_wt = avg_wt, avg_ht = avg_ht)
 
 
 
@@ -172,10 +174,23 @@ def growthrate_levels():
 
 
 
-@app.route('/about')
-def about():
-  html = "<p>about</p>"
-  return html
+
+# start charts routes
+# barchart route
+@app.route('/barchart1')
+def barchart1():
+  return render_template("charts/barchart1.html")
+
+# piechart route
+@app.route('/piechart1')
+def piechart1():
+  return render_template("charts/piechart1.html")
+
+# linegraph route
+@app.route('/linegraph1')
+def linegraph1():
+  return render_template("charts/linegraph1.html")
+
 
 if __name__ == '__main__':
     app.run()

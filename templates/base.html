@@ -65,7 +65,7 @@
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-
+      
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
@@ -115,7 +115,12 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
+          <nav class="row nav-link">
+            <a href="/barchart1">/barchart1</a>
+            <a href="/piechart1">/piechart1</a>
+            <a href="/linegraph1">/linegraph1</a>
+          </nav>
+          <div id="template_here" class="row">
             <!-- templates will be pushed here -->
             {% block content %}
 
@@ -156,6 +161,11 @@
   <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script> 
 
   <script src="static/js/app.js"></script>
+  <script src="static/js/barchart1.js"></script>
+  <script src="static/js/piechart1.js"></script>
+  <script src="static/js/linegraph1.js"></script>
+  
+
 
   <!-- End plugin js for this page -->
   <!-- Custom js for this page-->
