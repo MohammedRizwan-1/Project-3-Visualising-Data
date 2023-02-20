@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="col-sm-12">
+    <div class="home-tab">
+      <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active ps-0" id="first-tab" data-bs-toggle="tab" href="#first" role="tab" aria-controls="overview" aria-selected="true">Tab 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="second-tab" data-bs-toggle="tab" href="#second" role="tab" aria-selected="false">Tab 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="third-tab" data-bs-toggle="tab" href="#third" role="tab" aria-selected="false">Tab 3</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- start of all tabs container -->
+      <div class="tab-content tab-content-basic">
+
+        <!-- start of 1st tab -->
+        <div class="tab-pane fade show active" id="first" role="tabpanel" aria-labelledby="overview">
+          <div class="row">
+            <div class="col-12 col-lg-4 col-lg-12">
+              <h3 class="tab-head">
+                First Tab
+                <small class="text-muted">
+                  Secondary text
+                </small>
+              </h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 d-flex flex-column">
+              <div class="row flex-grow">
+                <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                  <div class="card card-rounded">
+                    <div class="card-body">
+                      <div class="d-sm-flex justify-content-between align-items-start">
+                        <div>
+                         <h4 class="card-title card-title-dash">Sample chart 1</h4>
+                         <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
+                        </div>
+                      </div>
+                      <div class="mt-5">
+                        <div id="barchart11">chart</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 d-flex flex-column">
+              <div class="row flex-grow">
+                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                  <div class="card bg-primary card-rounded">
+                    <div class="card-body pb-0">
+                      <h4 class="card-title card-title-dash text-white mb-4">Summary of Data</h4>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <p class="status-summary-ight-white mb-1">Closed Value</p>
+                          <h2 class="text-info">357</h2>
+                        </div>
+                        <div class="col-sm-8">
+                          <div class="status-summary-chart-wrapper pb-4">
+                            <canvas id="status-summary"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of 1st tab -->
+
+
+        <!-- start of  2nd tab -->
+        <div class="tab-pane fade show" id="second" role="tabpanel" aria-labelledby="overview">
+          <div class="row">
+            <div class="col-12 col-lg-4 col-lg-12">
+              <h3 class="tab-head">
+                Second Tab
+                <small class="text-muted">
+                  Secondary text
+                </small>
+              </h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 d-flex flex-column">
+              <div class="row flex-grow">
+                <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                  <div class="card card-rounded">
+                    <div class="card-body">
+                      <div class="d-sm-flex justify-content-between align-items-start">
+                        <div>
+                         <h4 class="card-title card-title-dash">Sample chart 1</h4>
+                         <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
+                        </div>
+                      </div>
+                      <div class="mt-5">
+                        <div id="piechart11">chart</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 d-flex flex-column">
+              <div class="row flex-grow">
+                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                  <div class="card bg-primary card-rounded">
+                    <div class="card-body pb-0">
+                      <h4 class="card-title card-title-dash text-white mb-4">Summary of Data</h4>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <p class="status-summary-ight-white mb-1">Closed Value</p>
+                          <h2 class="text-info">357</h2>
+                        </div>
+                        <div class="col-sm-8">
+                          <div class="status-summary-chart-wrapper pb-4">
+                            <canvas id="status-summary"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- end of 2nd tab -->
+
+
+        <!-- start of 3rd tab -->
+        <div class="tab-pane fade show" id="third" role="tabpanel" aria-labelledby="overview">
+          <div class="row">
+            <div class="col-12 col-lg-4 col-lg-12">
+              <h3 class="tab-head">
+                Third Tab
+                <small class="text-muted">
+                  Secondary text
+                </small>
+              </h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 d-flex flex-column">
+              <div class="row flex-grow">
+                <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                  <div class="card card-rounded">
+                    <div class="card-body">
+                      <div class="d-sm-flex justify-content-between align-items-start">
+                        <div>
+                         <h4 class="card-title card-title-dash">Sample chart 1</h4>
+                         <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
+                        </div>
+                      </div>
+                      <div class="mt-5">
+                        <div id="linegraph11">chart</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 d-flex flex-column">
+              <div class="row flex-grow">
+                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                  <div class="card bg-primary card-rounded">
+                    <div class="card-body pb-0">
+                      <h4 class="card-title card-title-dash text-white mb-4">Summary of Data</h4>
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <p class="status-summary-ight-white mb-1">Closed Value</p>
+                          <h2 class="text-info">357</h2>
+                        </div>
+                        <div class="col-sm-8">
+                          <div class="status-summary-chart-wrapper pb-4">
+                            <canvas id="status-summary"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--  end of 3rd tab -->
+
+
+      </div>
+      <!-- end of all tabs container -->
+
+    </div>
+  </div>
+
+
+{% endblock %}

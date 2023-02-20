@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="col-sm-12">
+    <div class="home-tab">
+      <div class="tab-content tab-content-basic">
+        <div class="tab-pane fade show active" id="first" role="tabpanel" aria-labelledby="overview">
+          <div class="row">
+            <div class="col-12 col-lg-4 col-lg-12">
+              <h3 class="tab-head">
+                Poke 
+                <small class="text-muted">
+                  Data
+                </small>
+              </h3>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-lg-12 d-flex flex-column">
+              <div class="row flex-grow">
+                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                  <div class="card bg-primary card-rounded">
+                    <div class="card-body pb-0">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <h6 class="text-skyblu bold-900">CHARACTERS ANALYSED</h6>
+                          <h6 class="text-skyblu">{{char_count}}</h6>
+                        </div>
+                        <div class="col-sm-12">
+                          <h6 class="text-skyblu bold-900">AVERAGE HEIGHT</h6>
+                          <h6 class="text-skyblu">{{avg_ht[0]}}</h6>
+                        </div>
+                        <div class="col-sm-12">
+                          <h6 class="text-skyblu bold-900">AVERAGE WEIGHT</h6>
+                          <h6 class="text-skyblu">{{avg_wt[0]}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 d-flex flex-column">
+              <div class="row flex-grow">
+                <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                  <div class="card card-rounded">
+                    <div class="card-body">
+                      <div class="d-sm-flex justify-content-between align-items-start">
+                        <div>
+                         <h4 class="card-title card-title-dash">Poke</h4>
+                         <h5 class="card-subtitle card-subtitle-dash">scroll to view all columns</h5>
+                        </div>
+                        <div id="performance-line-legend"></div>
+                      </div>
+                      <div class="mt-5">
+                        <!-- start of table display -->
+                        <div class="table-responsive">
+                          <table id="poke-table" class="table table-striped">
+                            <thead>  
+                            <tr> 
+                              <th>Poke ID</th> 
+                              <th>Pic</th> 
+                              <th>Name</th> 
+                              <th>Height</th> 
+                              <th>Weight</th> 
+                              <th>male_rate</th> 
+                              <th>female_rate</th> 
+                              <th>Type 1</th> 
+                              <th>Growth Rate</th> 
+                              <th>Base HP</th> 
+                            </tr> 
+                            </thead> 
+                            <tbody> 
+                        
+                                {% for row in tb_data1 %}
+                                <tr> 
+                                    <td>{{row[0]}}</td> 
+                                    <td><img src="{{row[1]}}" alt="image"></td> 
+                                    <td>{{row[2]}}</td> 
+                                    <td>{{row[3]}}</td> 
+                                    <td>{{row[4]}}</td> 
+                                    <td>{{row[5]}}</td> 
+                                    <td>{{row[6]}}</td> 
+                                    <td>{{row[7]}}</td> 
+                                    <td>{{row[8]}}</td> 
+                                    <td>{{row[9]}}</td> 
+                                </tr> 
+                                {% endfor %}
+                            </tbody> 
+                          </table> 
+                          <!-- end of table display -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

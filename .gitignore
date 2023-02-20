@@ -1,3 +1,6 @@
+# Config.py file which houses sqlalchemy and Postgres elements
+config.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
