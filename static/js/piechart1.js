@@ -1,5 +1,5 @@
 //barchart1.js
-let pokeAPIURL = "http://127.0.0.1:5000/api/poke"
+let pokeAPIURL = "api/poke"
 
 
 // creating options element and injecting with pokemon names
