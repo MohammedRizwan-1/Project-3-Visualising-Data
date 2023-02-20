@@ -41,12 +41,23 @@ const plotBAR = (filterVal) => {
         let base_sp_def = dat.filter(useCURRENT).map(d => d.base_sp_def)
         let base_speed = dat.filter(useCURRENT).map(d => d.base_speed)
 
-        // y coordinates
+        // x coordinates
         let baseSTATSy = [base_attack[0], base_def[0], base_hp[0], base_sp_attack[0], base_sp_def[0], base_speed[0]]
         console.log(base_speed)
 
         // start of graph
-      
+        let trace = {
+            x: baseSTATSx,
+            y: baseSTATSy,
+            type: "bar",
+            // orientation: "h"
+        }
+        let data = [trace];
+        let layout = {
+            showlegend: false,
+            
+        };
+        Plotly.newPlot("bargraph1", data, layout);
 
     })
 }

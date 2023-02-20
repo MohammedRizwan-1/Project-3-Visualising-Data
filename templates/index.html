@@ -7,27 +7,75 @@
       <div class="tab-content tab-content-basic">
         <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
           <div class="row">
-            <div class="col-lg-8 d-flex flex-column">
+            <div class="col-lg-5 d-flex flex-column">
               <div class="row flex-grow">
                 <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
                   <div class="card card-rounded">
                     <div class="card-body">
                       <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                         <h4 class="card-title card-title-dash">Sample chart 1</h4>
-                         <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
-                        </div>
-                        <div id="performance-line-legend"></div>
+                        <div class="d-sm-flex justify-content-between align-items-start">
+                          <div>
+                            <h3 class="card-title card-title-dash">Please select a Character</h3>
+                            <select id="select_pokemain" class="card-subtitle card-subtitle-dash form-select" onchange="changePOKESTATS(this.value)"></select>
+
+                            <!-- <h3 class="card-subtitle card-subtitle-dash"></h3> -->
+                            
+                            <table class="tiny_table_style">
+                              <tr>
+                                <th id="pokeNAMEMAIN"></th>
+                                <td><img id="pokeIMGMAIN" alt="pokemon pic", width="100"></td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>                        
                       </div>
-                      <div class="chartjs-wrapper mt-5">
-                        <div id="performaneLine"></div>
+                      <div class="mt-1">
+                        <table class="table select-table big_table_style">
+                            <tr id="characterWeight">
+                              <th>Weight</th>
+                              <td></td>
+                            </tr>
+                            <tr id="characterHeight">
+                              <th>Height</th>
+                              <td></td>
+                            </tr>
+                            <tr id="characterHabitat">
+                              <th>Habitat</th>
+                              <td></td>
+                            </tr>
+                            <tr id="characterType1_2">
+                              <th>Type(1/2)</th>
+                              <td></td>
+                            </tr>
+                            <tr id="characterEvolve">
+                              <th>Evolves From</th>
+                              <td></td>
+                            </tr>
+                            <tr id="growthRate">
+                              <th>Growth Rate</th>
+                              <td></td>
+                            </tr>
+                        </table>
+                      </div>
+                      <hr>
+                      <div id="performance-line-legend">
+                        <div class="chartjs-legend">
+                          <table>
+                            <tr>
+                              <td>Color: </td>
+                              <td id="characterColor"></td>
+                              <td> <div style="padding-left: 20px;" >Shape:</div>  </td>
+                              <td id="characterShape"></td>
+                            </tr>
+                          </table>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 d-flex flex-column">
+            <div class="col-lg-7 d-flex flex-column">
               <div class="row flex-grow">
                 <div class="col-md-6 col-lg-12 grid-margin stretch-card">
                   <div class="card bg-primary card-rounded">

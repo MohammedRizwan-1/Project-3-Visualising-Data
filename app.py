@@ -4,8 +4,6 @@ from sqlalchemy import create_engine, func
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 
-import requests
-import json
 import pandas as pd
 import numpy as np
 
@@ -39,15 +37,21 @@ gr_levels_table = Base.classes.growth_rate_levels
 
 # Flask Setup
 app = Flask(__name__)
+app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+
 
 # Flask Routes
-
+# ############# START OF FRONT PAGE route ################
 # Home route
 @app.route("/")
 def index():
   return render_template("index.html")
+# ############# END OF FRONT PAGE route ################
 
-# API routes
+
+# ############# START OF API routes ################
+####################################################
 # Poke route api
 @app.route("/api/poke")
 def poke_api():
@@ -103,7 +107,6 @@ def gr_species():
               "growth_rate": row[1],
               "species_name": row[2],  
            })
-    
     # Return dictionary as a JSON file for JS processing
     return(jsonify(gr_species))
 
@@ -123,18 +126,26 @@ def gr_levels():
               "level": row[2],                    
               "exp": row[3],                    
            })
-    
     # Return dictionary as a JSON file for JS processing
     return(jsonify(gr_levels))
+# ############# END OF API routes ################
 
 
+
+
+# ############# START OF STATS route ################
+######################################################
+# stats route
 @app.route('/stats')
 def stats():
   return render_template("stats.html")
+# ############# END OF STATS route ################
 
 
 
-# stats route
+# ############ START OF TABLE routes ###############
+####################################################
+# poke table route
 @app.route('/poke-table')
 def poketable():
   session = Session(engine)
@@ -147,7 +158,7 @@ def poketable():
   return render_template("poke_table.html", tb_data1 = tb_data1, char_count= char_count, avg_wt = avg_wt, avg_ht = avg_ht)
 
 
-
+# growth rate species route 
 @app.route('/grspecies-table')
 def growthrate_species():
   session = Session(engine)
@@ -159,7 +170,7 @@ def growthrate_species():
   return render_template("growthrate_species.html", tb_data2 = tb_data2, gr_species_count = gr_species_count, gr_species_gr = gr_species_gr)
 
 
-
+# growth rate levels route
 @app.route('/grlevels-table')
 def growthrate_levels():
   session = Session(engine)
@@ -171,11 +182,13 @@ def growthrate_levels():
   session.close()
 
   return render_template("growthrate_levels.html", tb_data3 = tb_data3, gr_levels_count = gr_levels_count, gr_species_gr = gr_species_gr, gr_levels_max_ex = gr_levels_max_ex)
+# ############ END OF TABLE routes ###############
 
 
 
 
-# start charts routes
+############# START OF CHARTS ROUTES ################
+#####################################################
 # barchart route
 @app.route('/barchart1')
 def barchart1():
@@ -190,6 +203,7 @@ def piechart1():
 @app.route('/linegraph1')
 def linegraph1():
   return render_template("charts/linegraph1.html")
+############# END OF charts routes ################
 
 
 if __name__ == '__main__':
