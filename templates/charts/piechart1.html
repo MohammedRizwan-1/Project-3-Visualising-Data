@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+
+  <div class="col-sm-3 statistics-details py-5 px-4">
+      <h4 class="statistics-title">Pokemon Gender Pie Chart</h4>
+      <select id="select_pokename" class="form-select" onchange="piePLOTCHANGE(this.value)"></select>
+  </div>
+  <div class="col-sm-9 statistics-details py-5 px-4">
+      <h4 id="gender_pie" class="statistics-title"></h4>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-lg-12 d-flex flex-column">
+  <div class="row flex-grow">
+      <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+      <div class="card card-rounded">
+          <div class="card-body">
+          <div class="mt-5">
+              <div id="gender_pie"></div>
+          </div>
+          </div>
+      </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+
+<script src="piechar1.js"></script>
+
+
+{% endblock %}
