@@ -45,7 +45,8 @@ const plotGRAPH = (filterVal) => {
 
 }
 
-// When the value of growth rate changes
+/// When the value of growth rate changes
+
 let optionChanged = (chosenVALUE) => {
     plotGRAPH(chosenVALUE)
 }
