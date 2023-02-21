@@ -41,10 +41,37 @@ const plotGRAPH = (filterVal) => {
         let exps = dat.filter(useCURRENT).map(d => d.exp)
         console.log(`--exps of '${filterVal}' growth rate: ${exps}`)
 
+        // linechart
+        linegraph1 = {
+          type: 'scatter',
+          x: levels,
+          y: exps,
+          mode: 'lines',
+          name: 'Red',
+          line: {
+            color: 'rgb(219, 64, 82)',
+            width: 3
+          }
+        };
+        var layout = {
+          width: 500,
+          height: 500,
+          title:'Experience vs Levels for Growth Rates ',
+          xaxis: {
+            title: 'Levels for Growth Rate',
+            showgrid: false,
+            zeroline: false
+          },
+          yaxis: {
+            title: 'Experience Required for Pokemon to Reach Levels',
+            showline: false
+          }
+        };
+        var data = [linegraph1],
+        Plotly.newPlot('linegraph1', data, layout);
     })
-
 }
-
+    plotGRAPH("slow")
 /// When the value of growth rate changes
 
 let optionChanged = (chosenVALUE) => {
