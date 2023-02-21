@@ -66,7 +66,7 @@ const plotGRAPH = (filterVal) => {
           }
         };
         var data = [linegraph1]
-        Plotly.newPlot('linegraph1', data, layout);
+        Plotly.newPlot('linegraph', data, layout);
         })
         }
         plotGRAPH("slow")
