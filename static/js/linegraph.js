@@ -2,8 +2,8 @@ let url = "/api/gr-levels"
 
 // creating options element and injecting with unique  growth rates
 const createGRoptions = () => {
-    d3.json(url).then(dat => {
-        let growthrates = dat.map(d => d.growth_rate)
+    d3.json(url).then(data => {
+        let growthrates = data.map(da => da.growth_rate)
         console.log("before removing duplicate names-->", growthrates)
         growthrates = [...new Set(growthrates)]
         console.log("after removing duplicates-->", growthrates)
@@ -11,7 +11,7 @@ const createGRoptions = () => {
         .selectAll('option')
         .data(growthrates).enter()
         .append('option')
-          .text(d => d)
+          .text(da => da)
     })  
   }
 createGRoptions()
