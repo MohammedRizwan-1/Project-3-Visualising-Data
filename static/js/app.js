@@ -12,7 +12,7 @@ const createPOKEOPTIONSMAIN = () => {
           .text(d => d)
     })  
   }
-  createPOKEOPTIONSMAIN()
+createPOKEOPTIONSMAIN()
 
 const pokeSTATS = (filterVal) => {
     console.log("-->", filterVal)
@@ -34,6 +34,8 @@ const pokeSTATS = (filterVal) => {
         const average = arr => arr.reduce((a,b) => a + b, 0) /arr.length
         let avgWEIGHT = average(dat.map(d => d.weight))
         let avgHEIGHT = average(dat.map(d => d.height))
+        let avgMALERATE = average(dat.map(d => d.male_rate))
+        let avgFEMALERATE = average(dat.map(d => d.female_rate))
         console.log("calc avg weight-----X", avgWEIGHT)
 
         // getting character attributes
@@ -53,26 +55,6 @@ const pokeSTATS = (filterVal) => {
         let genderNeutralRATE = dat.filter(useCURRENT).map(d => d.gender_neutral_rate)
 
 
-        
-        console.log(charcterIMG)
-        // to be used as x coordinates
-        let baseSTATSx = ["base_attack", "base_def", "base_hp", "base_sp_attack", "base_sp_def", "base_speed"];
-        console.log("-basestatsx-", baseSTATSx)
-
-        // base stats
-        // to be used as y coordinates
-        let base_attack = dat.filter(useCURRENT).map(d => d.base_attack)
-        let base_def = dat.filter(useCURRENT).map(d => d.base_def)
-        let base_hp = dat.filter(useCURRENT).map(d => d.base_hp)
-        let base_sp_attack = dat.filter(useCURRENT).map(d => d.base_sp_attack)
-        let base_sp_def = dat.filter(useCURRENT).map(d => d.base_sp_def)
-        let base_speed = dat.filter(useCURRENT).map(d => d.base_speed)
-
-        // creating an array of y coordinates
-        let baseSTATSy = [base_attack[0], base_def[0], base_hp[0], base_sp_attack[0], base_sp_def[0], base_speed[0]]
-        console.log(base_speed)
-
-
         // push to html
         d3.select("#pokeNAMEMAIN>th").text(filterVal)
         // d3.select("#characterColor").text(charcterCOLOR)
@@ -86,19 +68,124 @@ const pokeSTATS = (filterVal) => {
         d3.select("#characterEvolve>td").text(characterEVOLVE)
         d3.select("#growthRate>td").text(characterGR)
 
+
+
         // start of graph
-        let trace = {
-            x: baseSTATSx,
-            y: baseSTATSy,
+        let trace1 = {
+            x: ["Weight vs AVG", "Height vs AVG"],
+            y: [charcterWEIGHT[0], charcterHEIGHT[0]],
             type: "bar",
             // orientation: "h"
         }
-        let data = [trace];
-        let layout = {
-            showlegend: false,
+
+        let trace2 = {
+            x: ["Weight vs AVG", "Height vs AVG"],
+            y: [avgWEIGHT, avgHEIGHT],
+            type: "bar",
+            // orientation: "h"
+        }
+
+        let trace3 = {
+            x: ["Male Rate vs AVG", "Female Rate vs AVG"],
+            y: [maleRATE[0], femaleRATE[0]],
+            type: "pie",
+            // orientation: "h"
+        }
+
+        let trace4 = {
+            x: ["Male Rate vs AVG", "Female Rate vs AVG"],
+            y: [avgMALERATE, avgFEMALERATE],
+            type: "pie",
+            // orientation: "h"
+        }
+
+       
+        let chartOptions1 = {
+            responsive: true,
+            legend: {
+              position: "top"
+            },
+            title: {
+              display: true,
+              text: "Character Weight & Height vs The Average"
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+          let chartOptions2 = {
+            responsive: true,
+            legend: {
+              position: "top"
+            },
+            title: {
+              display: true,
+              text: "Character Gender Rate vs The Average"
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }          
+        // Plot for Weight and height vs average weight and height
+        new Chart(document.getElementById("compare_with_avg_wt_ht_plot"), {
+            type: 'bar',
+            data: {
+              labels: ["Weight vs AVG", "Height vs AVG"],
+              datasets: [{
+                label: 'Selected Character',
+                data: [charcterWEIGHT[0], charcterHEIGHT[0]],
+                backgroundColor: "pink",
+                borderColor: "red",          
+                borderWidth: 1
+              }, {
+                label: 'The Average',
+                data: [avgWEIGHT, avgHEIGHT],
+                backgroundColor: "lightblue",
+                borderColor: "blue",
+          
+                borderWidth: 1
+              }]
+            },
+            options: chartOptions1
+          });
+        
+        
+        // Plot for Gender rate vs average Gender rate
+        new Chart(document.getElementById("compare_with_avg_gender_rate_plot"), {
+            type: 'bar',
+            data: {
+                labels: ["Male Rate vs AVG", "Female Rate vs AVG"],
+                datasets: [{
+                label: 'Selected Character',
+                data: [maleRATE[0], femaleRATE[0]],
+                backgroundColor: "lightgreen",
+                borderColor: "green",
+                borderWidth: 1
+                }, {
+                label: 'The Average',
+                data: [avgMALERATE, avgFEMALERATE],
+                backgroundColor: "yellow",
+                borderColor: "orange",
             
-        };
-        // Plotly.newPlot("bargraph1", data, layout);
+                borderWidth: 1
+                }]
+            },
+            options: chartOptions2
+            });
+        
+          
+
+        // Plotly.newPlot("compare_with_avg_wt_ht_plot", data = data1, layout,  {scrollZoom: true});
+
+        // Plotly.newPlot("compare_with_avg_gender_rate_plot", data = data2, layout,  {scrollZoom: true});
 
     })
 }

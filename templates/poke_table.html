@@ -23,18 +23,26 @@
                   <div class="card bg-primary card-rounded">
                     <div class="card-body pb-0">
                       <div class="row">
-                        <div class="col-sm-12">
-                          <h6 class="text-skyblu bold-900">CHARACTERS ANALYSED</h6>
-                          <h6 class="text-skyblu">{{char_count}}</h6>
-                        </div>
-                        <div class="col-sm-12">
-                          <h6 class="text-skyblu bold-900">AVERAGE HEIGHT</h6>
-                          <h6 class="text-skyblu">{{avg_ht[0]}}</h6>
-                        </div>
-                        <div class="col-sm-12">
-                          <h6 class="text-skyblu bold-900">AVERAGE WEIGHT</h6>
-                          <h6 class="text-skyblu">{{avg_wt[0]}}</h6>
-                        </div>
+                        <table class="table-responsive big_table_style">
+                          <tr>
+                            <th><h6 class="text-skyblu bold-900">CHARACTER COUNT</h6></th>
+                            <th><h6 class="text-skyblu bold-900">AVG HEIGHT</h6></th>
+                            <th><h6 class="text-skyblu bold-900">AVG WEIGHT</h6></th>
+                            <th><h6 class="text-skyblu bold-900">AVG MALE RATE</h6></th>
+                            <th><h6 class="text-skyblu bold-900">AVG FEMALE RATE</h6></th>
+                            <th><h6 class="text-skyblu bold-900">AVG BASE HP</h6></th>
+                            <th><h6 class="text-skyblu bold-900">AVG CATCH RATE</h6></th>
+                          </tr>
+                          <tr>
+                            <td><h6 class="text-skyblu">{{char_count}}</h6></td>
+                            <td><h6 class="text-skyblu">{{avg_ht[0]}}</h6></td>
+                            <td><h6 class="text-skyblu">{{avg_wt[0]}}</h6></td>
+                            <td><h6 class="text-skyblu">{{avg_malerate[0]}}</h6></td>
+                            <td><h6 class="text-skyblu">{{avg_femalerate[0]}}</h6></td>
+                            <td><h6 class="text-skyblu">{{avg_basehp[0]}}</h6></td>
+                            <td><h6 class="text-skyblu">{{avg_catchrate[0]}}</h6></td>
+                          </tr>
+                        </table>
                       </div>
                     </div>
                   </div>

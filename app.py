@@ -153,9 +153,14 @@ def poketable():
   char_count = session.query(poke.name).count()
   avg_wt = session.query(func.round(func.avg(poke.weight)), 0).one()
   avg_ht = session.query(func.round(func.avg(poke.height)), 0).one()
+  avg_malerate = session.query(func.round(func.avg(poke.male_rate)), 0).one()
+  avg_femalerate = session.query(func.round(func.avg(poke.female_rate)), 0).one()
+  avg_basehp = session.query(func.round(func.avg(poke.base_hp)), 0).one()
+  avg_catchrate = session.query(func.round(func.avg(poke.catch_rate)), 0).one()
+
   session.close()
 
-  return render_template("poke_table.html", tb_data1 = tb_data1, char_count= char_count, avg_wt = avg_wt, avg_ht = avg_ht)
+  return render_template("poke_table.html", tb_data1 = tb_data1, char_count= char_count, avg_wt = avg_wt, avg_ht = avg_ht, avg_malerate = avg_malerate, avg_femalerate = avg_femalerate, avg_basehp = avg_basehp, avg_catchrate = avg_catchrate)
 
 
 # growth rate species route 

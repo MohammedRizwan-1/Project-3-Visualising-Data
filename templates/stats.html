@@ -6,13 +6,13 @@
       <div class="d-sm-flex align-items-center justify-content-between border-bottom">
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active ps-0" id="first-tab" data-bs-toggle="tab" href="#first" role="tab" aria-controls="overview" aria-selected="true">Tab 1</a>
+            <a class="nav-link active ps-0" id="first-tab" data-bs-toggle="tab" href="#first" role="tab" aria-controls="overview" aria-selected="true">Bar Chart of Base Stats</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="second-tab" data-bs-toggle="tab" href="#second" role="tab" aria-selected="false">Tab 2</a>
+            <a class="nav-link" id="second-tab" data-bs-toggle="tab" href="#second" role="tab" aria-selected="false">Pie Chart of Gender Rates</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="third-tab" data-bs-toggle="tab" href="#third" role="tab" aria-selected="false">Tab 3</a>
+            <a class="nav-link" id="third-tab" data-bs-toggle="tab" href="#third" role="tab" aria-selected="false">Line Graph of Growth Rates</a>
           </li>
         </ul>
       </div>
@@ -22,13 +22,14 @@
 
         <!-- start of 1st tab -->
         <div class="tab-pane fade show active" id="first" role="tabpanel" aria-labelledby="overview">
-          <div class="row">
-            <div class="col-12 col-lg-4 col-lg-12">
+          <div class="row mb-3">
+            <div class="col-lg-4 d-flex flex-column">
+              <h3 class="tab-head">Select Character</h3>
+              <select class="select_pokename card-subtitle form-select" onchange="barPLOTCHANGE(this.value)"></select>
+            </div>
+            <div class="col-lg-8 d-flex flex-column">
               <h3 class="tab-head">
-                First Tab
-                <small class="text-muted">
-                  Secondary text
-                </small>
+                <small class="charName text-muted"></small>
               </h3>
             </div>
           </div>
@@ -40,12 +41,13 @@
                     <div class="card-body">
                       <div class="d-sm-flex justify-content-between align-items-start">
                         <div>
-                         <h4 class="card-title card-title-dash">Sample chart 1</h4>
-                         <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
+                         <h4 class="card-title card-title-dash"></h4>
+                         <h5 class="card-subtitle card-subtitle-dash"></h5>
                         </div>
                       </div>
                       <div class="mt-5">
-                        <div id="barchart11">chart</div>
+                        <!-- <div id="barchart"></div> -->
+                        <div id="stats_radar"></div>
                       </div>
                     </div>
                   </div>
@@ -54,20 +56,37 @@
             </div>
             <div class="col-lg-4 d-flex flex-column">
               <div class="row flex-grow">
-                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                <div class="col-md-6 col-lg-12 grid-margin">
                   <div class="card bg-primary card-rounded">
                     <div class="card-body pb-0">
-                      <h4 class="card-title card-title-dash text-white mb-4">Summary of Data</h4>
+                      <h4 class="card-title card-title-dash text-white mb-4">Base Stats</h4>
                       <div class="row">
-                        <div class="col-sm-4">
-                          <p class="status-summary-ight-white mb-1">Closed Value</p>
-                          <h2 class="text-info">357</h2>
-                        </div>
-                        <div class="col-sm-8">
-                          <div class="status-summary-chart-wrapper pb-4">
-                            <canvas id="status-summary"></canvas>
-                          </div>
-                        </div>
+                        <table id="base_stats_for_barchartpage" class="table-responsive big_table_style">
+                          <tr id="bs_attack_barchartpage">
+                            <th class="text-skyblu bold-900">Base Attack</th>
+                            <td class="text-skyblu bold-00"></td>
+                          </tr>
+                          <tr id="bs_def_barchartpage">
+                            <th class="text-skyblu bold-900">Base Defence</th>
+                            <td class="text-skyblu bold-00"></td>
+                          </tr>
+                          <tr id="bs_hp_barchartpage">
+                            <th class="text-skyblu bold-900">Base HP</th>
+                            <td class="text-skyblu bold-00"></td>
+                          </tr>  
+                          <tr id="bs_sp_att_barchartpage">
+                            <th class="text-skyblu bold-900">Base SP Attack</th>
+                            <td class="text-skyblu bold-00"></td>
+                          </tr>
+                          <tr id="bs_sp_def_barchartpage">
+                            <th class="text-skyblu bold-900">Base SP Def</th>
+                            <td class="text-skyblu bold-00"></td>
+                          </tr>
+                          <tr id="bs_sp_barchartpage">
+                            <th class="text-skyblu bold-900">Base Speed</th>
+                            <td class="text-skyblu bold-00"></td>
+                          </tr>
+                        </table>
                       </div>
                     </div>
                   </div>
@@ -81,13 +100,14 @@
 
         <!-- start of  2nd tab -->
         <div class="tab-pane fade show" id="second" role="tabpanel" aria-labelledby="overview">
-          <div class="row">
-            <div class="col-12 col-lg-4 col-lg-12">
+          <div class="row mb-3">
+            <div class="col-lg-4 d-flex flex-column">
+              <h3 class="tab-head">Select Character</h3>
+              <select id="" class="select_pokename card-subtitle form-select" onchange="barPLOTCHANGE(this.value)"></select>
+            </div>
+            <div class="col-lg-8 d-flex flex-column">
               <h3 class="tab-head">
-                Second Tab
-                <small class="text-muted">
-                  Secondary text
-                </small>
+                <small class="charName text-muted"></small>
               </h3>
             </div>
           </div>
@@ -99,12 +119,12 @@
                     <div class="card-body">
                       <div class="d-sm-flex justify-content-between align-items-start">
                         <div>
-                         <h4 class="card-title card-title-dash">Sample chart 1</h4>
-                         <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
+                         <h4 class="card-title card-title-dash"></h4>
+                         <h5 class="card-subtitle card-subtitle-dash"></h5>
                         </div>
                       </div>
                       <div class="mt-5">
-                        <div id="piechart11">chart</div>
+                        <div id="gender_pie"></div>
                       </div>
                     </div>
                   </div>
@@ -113,20 +133,25 @@
             </div>
             <div class="col-lg-4 d-flex flex-column">
               <div class="row flex-grow">
-                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                <div class="col-md-6 col-lg-12 grid-margin">
                   <div class="card bg-primary card-rounded">
                     <div class="card-body pb-0">
-                      <h4 class="card-title card-title-dash text-white mb-4">Summary of Data</h4>
+                      <h4 class="card-title card-title-dash text-white mb-4">Gender Rates</h4>
                       <div class="row">
-                        <div class="col-sm-4">
-                          <p class="status-summary-ight-white mb-1">Closed Value</p>
-                          <h2 class="text-info">357</h2>
-                        </div>
-                        <div class="col-sm-8">
-                          <div class="status-summary-chart-wrapper pb-4">
-                            <canvas id="status-summary"></canvas>
-                          </div>
-                        </div>
+                        <table id="" class="table-responsive big_table_style">
+                          <tr id="gr_male">
+                            <th class="text-skyblu bold-900">Male Rate</th>
+                            <td class="text-skyblu bold-00"></td>
+                          </tr>
+                          <tr id="gr_female">
+                            <th class="text-skyblu bold-900">Female Rate</th>
+                            <td class="text-skyblu bold-00"></td>
+                          </tr>
+                          <tr id="gr_genderneutral">
+                            <th class="text-skyblu bold-900">Gender Neutral Rate</th>
+                            <td class="text-skyblu bold-00"></td>
+                          </tr>  
+                        </table>
                       </div>
                     </div>
                   </div>
@@ -142,51 +167,26 @@
         <!-- start of 3rd tab -->
         <div class="tab-pane fade show" id="third" role="tabpanel" aria-labelledby="overview">
           <div class="row">
-            <div class="col-12 col-lg-4 col-lg-12">
-              <h3 class="tab-head">
-                Third Tab
-                <small class="text-muted">
-                  Secondary text
-                </small>
-              </h3>
+            <div class="row mb-3">
+              <div class="col-lg-4 d-flex flex-column">
+                <h3 class="tab-head">Select Growth Rate</h3>
+                <select id="select_growthrate" class="select_pokename card-subtitle form-select" onchange="optionChanged(this.value)"></select>
+              </div>
+              <div class="col-lg-8 d-flex flex-column">
+                <h3 class="tab-head">
+                  <small id="growth_rate_for_linegraph" class="text-muted"></small>
+                </h3>
+              </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-8 d-flex flex-column">
+            <div class="col-lg-12 d-flex flex-column">
               <div class="row flex-grow">
                 <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
                   <div class="card card-rounded">
-                    <div class="card-body">
-                      <div class="d-sm-flex justify-content-between align-items-start">
-                        <div>
-                         <h4 class="card-title card-title-dash">Sample chart 1</h4>
-                         <h5 class="card-subtitle card-subtitle-dash">sub heading</h5>
-                        </div>
-                      </div>
+                    <div class="card-body">            
                       <div class="mt-5">
-                        <div id="linegraph11">chart</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 d-flex flex-column">
-              <div class="row flex-grow">
-                <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                  <div class="card bg-primary card-rounded">
-                    <div class="card-body pb-0">
-                      <h4 class="card-title card-title-dash text-white mb-4">Summary of Data</h4>
-                      <div class="row">
-                        <div class="col-sm-4">
-                          <p class="status-summary-ight-white mb-1">Closed Value</p>
-                          <h2 class="text-info">357</h2>
-                        </div>
-                        <div class="col-sm-8">
-                          <div class="status-summary-chart-wrapper pb-4">
-                            <canvas id="status-summary"></canvas>
-                          </div>
-                        </div>
+                        <div id="linegraph1"></div>
                       </div>
                     </div>
                   </div>
