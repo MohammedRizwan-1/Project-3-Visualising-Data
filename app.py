@@ -138,7 +138,7 @@ def gr_levels():
 # stats route
 @app.route('/stats')
 def stats():
-  return render_template("stats.html")
+  return render_template("charts/stats.html")
 # ############# END OF STATS route ################
 
 
@@ -194,20 +194,10 @@ def growthrate_levels():
 
 ############# START OF CHARTS ROUTES ################
 #####################################################
-# barchart route
-@app.route('/barchart1')
-def barchart1():
-  return render_template("charts/barchart1.html")
-
-# piechart route
-@app.route('/piechart1')
-def piechart1():
-  return render_template("charts/piechart1.html")
-
 # linegraph route
-@app.route('/linegraph1')
+@app.route('/linegraph')
 def linegraph1():
-  return render_template("charts/linegraph1.html")
+  return render_template("charts/linegraph.html")
 ############# END OF charts routes ################
 
 
