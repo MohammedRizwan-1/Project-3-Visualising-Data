@@ -60,7 +60,7 @@
                   <div class="card bg-primary card-rounded">
                     <div class="card-body pb-0">
                       <h4 class="card-title card-title-dash text-white mb-4">Base Stats</h4>
-                      <div class="row">
+                      <div class="row mb-3">
                         <table id="base_stats_for_barchartpage" class="table-responsive big_table_style">
                           <tr id="bs_attack_barchartpage">
                             <th class="text-skyblu bold-900">Base Attack</th>
@@ -137,7 +137,7 @@
                   <div class="card bg-primary card-rounded">
                     <div class="card-body pb-0">
                       <h4 class="card-title card-title-dash text-white mb-4">Gender Rates</h4>
-                      <div class="row">
+                      <div class="row mb-3">
                         <table id="" class="table-responsive big_table_style">
                           <tr id="gr_male">
                             <th class="text-skyblu bold-900">Male Rate</th>
@@ -159,7 +159,6 @@
               </div>
             </div>
           </div>
-
         </div>
         <!-- end of 2nd tab -->
 
@@ -170,7 +169,6 @@
             <div class="row mb-3">
               <div class="col-lg-4 d-flex flex-column">
                 <h3 class="tab-head">Select Growth Rate</h3>
-                <select id="select_growthrate" class="card-subtitle form-select" onchange="optionChanged(this.value)"></select>
               </div>
               <div class="col-lg-8 d-flex flex-column">
                 <h3 class="tab-head">
@@ -180,13 +178,32 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-12 d-flex flex-column">
+            <div class="col-lg-8 d-flex flex-column">
               <div class="row flex-grow">
                 <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
                   <div class="card card-rounded">
                     <div class="card-body">            
-                      <div class="mt-5">
-                        <div id="linegraph"></div>
+                      <div id="linegraph"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 d-flex flex-column">
+              <div class="row flex-grow">
+                <div class="col-md-6 col-lg-12 grid-margin">
+                  <div class="card bg-primary card-rounded">
+                    <div class="card-body pb-0">
+                      <h4 class="card-title card-title-dash text-white mb-4">Maximum Growth Rates</h4>
+                      <div class="row mb-3">
+                        <table id="" class="table-responsive big_table_style">
+                          {% for li in gr_species_gr %}
+                            <tr id="gr_s_stats">
+                              <th class="text-skyblu bold-900">{{li[0]}}</th>
+                              <td class="text-skyblu">{{gr_levels_max_ex[loop.index0][0]}}</td>
+                            </tr>
+                          {% endfor %}
+                        </table>
                       </div>
                     </div>
                   </div>

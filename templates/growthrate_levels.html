@@ -71,16 +71,22 @@
                       <div class="row">
                         <div class="col-sm-12">
                           <h4 class="text-skyblu bold-700">LEVELS</h4>
-                          <h6 class="text-info">{{gr_levels_count}}</h6>
+                          <h6 class="text-skyblu">{{gr_levels_count}}</h6>
                         </div>
                       </div>
                       <hr>
                       <div class="row">
                         <div class="col-sm-12 mb-4">
                           <h4 class="text-skyblu bold-700">GROWTH RATES : MAX EXP</h4>
-                          {% for li in gr_species_gr %}
-                            <h6 class="text-info">{{li[0]}}:{{gr_levels_max_ex[loop.index0][0]}}</h6>
-                          {% endfor %}
+                          <table class="table-responsive big_table_style">
+                            {% for li in gr_species_gr %}
+                              <tr id="gr_s_stats">
+                                <th class="text-skyblu bold-900">{{li[0]}}</th>
+                                <td class="text-skyblu">{{gr_levels_max_ex[loop.index0][0]}}</td>
+                              </tr>
+                            {% endfor %}
+                          </table>
+
                         </div>
                       </div>
                     </div>

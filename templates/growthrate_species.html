@@ -68,17 +68,21 @@
                       <hr> -->
                       <div class="row">
                         <div class="col-sm-12">
-                          <h4 class="text-skyblu bold-700">SPECIES ANALYSED</h4>
-                          <h6 class="text-info">{{gr_species_count}}</h6>
+                          <h4 class="text-skyblu bold-900">SPECIES ANALYSED</h4>
+                          <h6 class="text-skyblu">{{gr_species_count}}</h6>
                         </div>
                       </div>
                       <hr>
                       <div class="row">
                         <div class="col-sm-12 mb-4">
                           <h4 class="text-skyblu bold-700">GROWTH RATES</h4>
-                          {% for li in gr_species_gr %}
-                            <h6 class="text-info">{{li[0]}}</h6>
-                          {% endfor %}
+                          <table class="table-responsive big_table_style">
+                            {% for li in gr_species_gr %}
+                              <tr id="gr_s_stats">
+                                <th class="text-skyblu">{{li[0]}}</th>
+                              </tr>
+                            {% endfor %}
+                          </table>
                         </div>
                       </div>
                     </div>

@@ -1,29 +1,20 @@
 let url = "/api/gr-levels"
 
-// creating options element and injecting with unique  growth rates
-const createGRoptions = () => {
-    d3.json(url).then(data => {
-        let growthrates = data.map(da => da.growth_rate)
-        console.log("before removing duplicate names-->", growthrates)
-        growthrates = [...new Set(growthrates)]
-        console.log("after removing duplicates-->", growthrates)
-      d3.select("#select_growthrate")
-        .selectAll('option')
-        .data(growthrates).enter()
-        .append('option')
-          .text(da => da)
-    })  
-  }
-createGRoptions()
-
-const plotGRAPH = (filterVal) => {
-    console.log("-->", filterVal)
-    d3.select("#growth_rate_for_linegraph").text(filterVal.toUpperCase())
+const plotGRAPH = () => {
+    // console.log("-->", filterVal)
+    // d3.select("#growth_rate_for_linegraph").text(filterVal.toUpperCase())
     
 
     d3.json(url).then(dat => {
-        let useCURRENT = gr => gr.growth_rate == filterVal
-        console.log(useCURRENT)
+
+        let useCURRENT = gr => gr.growth_rate == "slow"
+        let slow = gr => gr.growth_rate == "slow"
+        let medium = gr => gr.growth_rate == "medium"
+        let fast = gr => gr.growth_rate == "fast"
+        let medium_slow = gr => gr.growth_rate == "medium-slow"
+        let slow_then_very_fast = gr => gr.growth_rate == "slow-then-very-fast"
+        let fast_then_very_slow = gr => gr.growth_rate == "fast-then-very-slow"
+        // console.log(useCURRENT)
 
         // getting the unique growth rates
         let growthrates = dat.map(d => d.growth_rate)
@@ -32,25 +23,35 @@ const plotGRAPH = (filterVal) => {
 
         // use as x coordinates
         let levels = dat.filter(useCURRENT).map(d => d.level)
-        console.log(`--levels of '${filterVal}' growth rate: ${levels}`)
+        console.log(`--levels of growth rate: ${levels}`)
 
         // use as y coordinates
-        let exps = dat.filter(useCURRENT).map(d => d.exp)
-        console.log(`--exps of '${filterVal}' growth rate: ${exps}`)
+        let slow_exps = dat.filter(slow).map(d => d.exp)
+        let medium_exps = dat.filter(medium).map(d => d.exp)
+        let fast_exps = dat.filter(fast).map(d => d.exp)
+        let medium_slow_exps = dat.filter(medium_slow).map(d => d.exp)
+        let slow_then_very_fast_exps = dat.filter(slow_then_very_fast).map(d => d.exp)
+        let fast_then_very_slow_exps = dat.filter(fast_then_very_slow).map(d => d.exp)
+        console.log(`--exps of growth rate: ${fast_then_very_slow_exps}`)
+        c_scale = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"]
+
+      
 
 
         // linechart
-        linegraph1 = {
-          type: 'scatter',
-          x: levels,
-          y: exps,
-          mode: 'lines',
-          name: 'Red',
-          line: {
-            color: 'rgb(219, 64, 82)',
-            width: 3
-          }
-        };
+        let trace = (y, c, g_rate) => {
+          return {
+            type: 'scatter',
+            x: levels,
+            y: y,
+            mode: 'lines',
+            name: g_rate,
+            line: {
+              color: c,
+              width: 1
+            }
+          };
+        }
         var layout = {
           width: 800,
           height: 500,
@@ -65,12 +66,19 @@ const plotGRAPH = (filterVal) => {
             showline: false
           }
         };
-        var data = [linegraph1]
+        var data = [
+          trace(slow_exps, c_scale[0], growthrates[0]), 
+          trace(medium_exps,c_scale[1], growthrates[1]), 
+          trace(fast_exps, c_scale[2], growthrates[2]), 
+          trace(medium_slow_exps, c_scale[3], growthrates[3]), 
+          trace(slow_then_very_fast_exps, c_scale[4], growthrates[4]), 
+          trace(fast_then_very_slow_exps, c_scale[5], growthrates[5]) 
+      ]
         Plotly.newPlot('linegraph', data, layout);
         })
+
         }
-        plotGRAPH("slow")
-        /// When the value of growth rate changes
+        plotGRAPH("All Growth Rates")
 
 let optionChanged = (chosenVALUE) => {
 plotGRAPH(chosenVALUE)

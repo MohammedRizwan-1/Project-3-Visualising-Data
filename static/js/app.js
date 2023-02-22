@@ -70,36 +70,7 @@ const pokeSTATS = (filterVal) => {
 
 
 
-        // start of graph
-        let trace1 = {
-            x: ["Weight vs AVG", "Height vs AVG"],
-            y: [charcterWEIGHT[0], charcterHEIGHT[0]],
-            type: "bar",
-            // orientation: "h"
-        }
-
-        let trace2 = {
-            x: ["Weight vs AVG", "Height vs AVG"],
-            y: [avgWEIGHT, avgHEIGHT],
-            type: "bar",
-            // orientation: "h"
-        }
-
-        let trace3 = {
-            x: ["Male Rate vs AVG", "Female Rate vs AVG"],
-            y: [maleRATE[0], femaleRATE[0]],
-            type: "pie",
-            // orientation: "h"
-        }
-
-        let trace4 = {
-            x: ["Male Rate vs AVG", "Female Rate vs AVG"],
-            y: [avgMALERATE, avgFEMALERATE],
-            type: "pie",
-            // orientation: "h"
-        }
-
-       
+        // start of graph       
         let chartOptions1 = {
             responsive: true,
             legend: {

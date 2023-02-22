@@ -133,18 +133,23 @@ def gr_levels():
 
 
 
-# ############# START OF STATS route ################
+# ############# START OF STATS route #################
 ######################################################
 # stats route
 @app.route('/stats')
 def stats():
-  return render_template("charts/stats.html")
-# ############# END OF STATS route ################
+  session = Session(engine)
+  gr_species_gr = session.query(gr_species_table.growth_rate).distinct().all()
+  gr_levels_max_ex = session.query(gr_levels_table.exp).filter(gr_levels_table.levels == 100).all()
+
+  session.close()
+  return render_template("charts/stats.html", gr_species_gr = gr_species_gr, gr_levels_max_ex = gr_levels_max_ex)
+# ############# END OF STATS route ###################
 
 
 
-# ############ START OF TABLE routes ###############
-####################################################
+# ############ START OF TABLE routes ##################
+#######################################################
 # poke table route
 @app.route('/poke-table')
 def poketable():
